@@ -14,15 +14,14 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     permissions:
       packages: write
     env:
-      REPO: crops/samba
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      REPO: devanlai/samba:arm64-latest
       GHCR_USERNAME: ${{ github.actor }}
       GHCR_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      DOCKER_DEFAULT_PLATFORM: linux/arm64
 
     steps:
       - uses: actions/checkout@v4
